@@ -1,8 +1,8 @@
 {
   "prefs": {
     "public": {
-      "char_limit": 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999,
-      "name_limit": 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999,
+      "char_limit": 500000,
+      "name_limit": 241000,
       "godword": null,
       "runlevel": {
         "godmode": 0,
@@ -25,7 +25,7 @@
         "sanitize": 3,
         "pope": 3
       },
-      "room_max": 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999,
+      "room_max": 100000,
       "owner": null,
       "pitch": {
         "max": 125,
@@ -40,8 +40,8 @@
       "defaultName": "Anonymous"
     },
     "private": {
-      "char_limit": 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999,
-      "name_limit": 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999,
+      "char_limit": 10000000,
+      "name_limit": 241000,
       "godword": null,
       "runlevel": {
         "godmode": 0,
@@ -64,7 +64,7 @@
         "sanitize": 3,
         "pope": 3
       },
-      "room_max": 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999,
+      "room_max": 100000,
       "owner": null,
       "pitch": {
         "max": 125,
@@ -111,7 +111,27 @@
     "gold",
     "orange",
     "yellow",
-    "magenta"
+    "magenta",
+    "amethyst",
+    "azure",
+    "burgundy",
+    "chocolate",
+    "dark_blue",
+    "indigo",
+    "intel_blue",
+    "milk",
+    "navy_blue",
+    "peridot",
+    "rainbow",
+    "red_orange",
+    "ruby",
+    "sapphire",
+    "scarlet",
+    "siam",
+    "strawberry_milk",
+    "tanzanite",
+    "turquoise",
+    "water_blue"
   ],
   "banLength": 1440,
   "port": 3000,
