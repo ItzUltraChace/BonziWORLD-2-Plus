@@ -268,7 +268,7 @@ let userCommands = {
             });
             target.disconnect();
         } else {
-          this.socket.emit('alert','The user you are trying to kick left. Get dunked on nerd')
+          this.socket.emit('alert','The user you are trying to kick left. Get dunked on nerd.')
       }
   },
   css:function(...txt){
@@ -297,12 +297,12 @@ let userCommands = {
             } else {
 
                 target.socket.emit("ban",{
-                    reason:"You got banned."
+                    reason:"You got banned. <br> You will no longer join Public Rooms."
                 })
-                Ban.addBan(target.socket.request.connection.remoteAddress, 24, "You got banned.");
+                Ban.addBan(target.socket.request.connection.remoteAddress, 24, "You got banned. <br> You will no longer join Public Rooms.");
             }
         }else{
-            this.socket.emit('alert','The user you are trying to kick left. Get dunked on nerd')
+            this.socket.emit('alert','The user you are trying to ban left. Get dunked on nerd.')
         }
     },
   "unban": function(ip) {
