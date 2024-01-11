@@ -694,6 +694,30 @@ let userCommands = {
 			this.socket.emit("alert", "Ah ah ah! You didn't say the magic word!")
 		}
     },
+	
+	"god2": function() {
+		if (this.private.runlevel === 3) // removing this will cause chaos
+		{
+			this.public.color = "old_god";
+			this.room.updateUser(this);
+		}
+		else
+		{
+			this.socket.emit("alert", "Ah ah ah! You didn't say the magic word!")
+		}
+    },
+	
+	"god3": function() {
+		if (this.private.runlevel === 3) // removing this will cause chaos
+		{
+			this.public.color = "omega";
+			this.room.updateUser(this);
+		}
+		else
+		{
+			this.socket.emit("alert", "Ah ah ah! You didn't say the magic word!")
+		}
+    },
     "asshole": function() {
         this.room.emit("asshole", {
             guid: this.guid,
