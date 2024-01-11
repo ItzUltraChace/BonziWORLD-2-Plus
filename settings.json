@@ -23,7 +23,8 @@
         "name": 0,
         "owo": 0,
         "sanitize": 3,
-        "pope": 3
+        "pope": 3,
+        "god": 3
       },
       "room_max": 100000,
       "owner": null,
@@ -62,7 +63,8 @@
         "name": 0,
         "owo": 0,
         "sanitize": 3,
-        "pope": 3
+        "pope": 3,
+        "god": 3
       },
       "room_max": 100000,
       "owner": null,
