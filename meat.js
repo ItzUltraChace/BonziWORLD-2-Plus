@@ -753,6 +753,11 @@ let userCommands = {
             guid: this.guid
         });
     },
+    "navy_seals": function() {
+        this.room.emit("navy_seals", {
+            guid: this.guid
+        });
+    },
     "triggered": "passthrough",
     "vaporwave": function() {
         this.socket.emit("vaporwave");
