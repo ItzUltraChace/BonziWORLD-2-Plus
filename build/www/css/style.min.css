@@ -304,11 +304,17 @@ body.vaporwave #chat_send {
   letter-spacing: 2px;
   font-size: 16px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
-  padding-left: 35px; }
-  #chat_send:hover {
-    background-position: 0 -33px; }
-  #chat_send:active {
-    background-position: 0 -67px; }
+  padding-left: 35px;
+  cursor: pointer;
+}
+#chat_send:hover {
+  background-position: 0 -33px;
+  cursor: pointer;
+}
+#chat_send:active {
+  background-position: 0 -67px;
+  cursor: pointer;
+}
 
 #chat_message_cont {
   padding: 4px; }
