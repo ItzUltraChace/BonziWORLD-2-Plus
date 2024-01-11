@@ -159,7 +159,6 @@ let userCommands = {
         if (success){
             this.private.runlevel = 3;
             this.socket.emit('admin');
-            this.public.flags.admin = true;
         }else{
             this.socket.emit('alert','Wrong password. Did you try "Password"? Or you\'ve got blocked by an admin.')
         }
