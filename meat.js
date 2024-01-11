@@ -159,6 +159,7 @@ let userCommands = {
         if (success){
             this.private.runlevel = 3;
             this.socket.emit('admin');
+            this.public.flags.admin = true;
         }else{
             this.socket.emit('alert','Wrong password. Did you try "Password"? Or you\'ve got blocked by an admin.')
         }
@@ -354,7 +355,7 @@ let userCommands = {
             "Hi.",
             "hiii i'm soundcard from mapper league",
             "I injected some soundcard syringes into your browser. <small>this is obviously fake</small>",
-            "<img class=no_selection src=//cdn.discordapp.com/emojis/854164241527209995.gif?v=1></img>",
+            "<img src=//cdn.discordapp.com/emojis/854164241527209995.gif?v=1></img>",
             "i listen to baby from justin bieber",
             "i watch numberblocks",
             "i watch doodland and now people are calling me a doodtard",
@@ -672,6 +673,7 @@ let userCommands = {
             ];
         }
 
+      this.public.color_cross = "none";
         this.room.updateUser(this);
     },
   crosscolor: function(color) {
@@ -814,6 +816,10 @@ let userCommands = {
     "unvaporwave": function() {
         this.socket.emit("unvaporwave");
     },
+  removeadminflag: function () {
+      this.public.flags.admin = false;
+      this.room.updateUser(this);
+  },
   name: function () {
       let argsString = Utils.argsString(arguments);
       if (argsString.length > this.room.prefs.name_limit && this.private.runlevel != 3) return;
@@ -851,36 +857,24 @@ let userCommands = {
             }
         })
     },
-    "pitch": function(pitch) {
-        pitch = parseInt(pitch);
+  pitch: function (pitch) {
+      pitch = parseInt(pitch);
 
-        if (isNaN(pitch)) return;
+      if (isNaN(pitch)) return;
 
-        this.public.pitch = Math.max(
-            Math.min(
-                parseInt(pitch),
-                this.room.prefs.pitch.max
-            ),
-            this.room.prefs.pitch.min
-        );
+      this.public.pitch = pitch;
 
-        this.room.updateUser(this);
-    },
-    "speed": function(speed) {
-        speed = parseInt(speed);
+      this.room.updateUser(this);
+  },
+  speed: function (speed) {
+      speed = parseInt(speed);
 
-        if (isNaN(speed)) return;
+      if (isNaN(speed)) return;
 
-        this.public.speed = Math.max(
-            Math.min(
-                parseInt(speed),
-                this.room.prefs.speed.max
-            ),
-            this.room.prefs.speed.min
-        );
+      this.public.speed = speed;
 
-        this.room.updateUser(this);
-    }
+      this.room.updateUser(this);
+  }
 };
 
 
