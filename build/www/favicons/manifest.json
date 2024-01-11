@@ -1,5 +1,7 @@
 {
-	"name": "BonziWORLD 2+ - Global leader in literally any chat client"
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+	"short_name": "BonziWORLD 2 Plus",
+	"name": "BonziWORLD 2 Plus - Global leader in literally any chat client"
 	"icons": [
 		{
 			"src": "\/favicons\/android-chrome-192x192.png",
