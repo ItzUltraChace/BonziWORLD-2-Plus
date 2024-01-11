@@ -688,6 +688,21 @@ let userCommands = {
           this.socket.emit("alert", "The crosscolor must be a valid image URL from Discord and Catbox.moe.\nValid file image types are: .png, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!");
       }
   },
+  colorcustom: function (hue, saturation) {
+      if (hue != null && saturation != null) {
+          this.public.hue = hue;
+          this.public.saturation = saturation;
+          this.socket.emit("setColor", `${hue} ${saturation}`);
+      }
+      this.room.updateUser(this);
+  },
+  colorcustom2: function (hue, saturation) {
+      if (hue != null && saturation != null) {
+          this.public.hue = hue;
+          this.public.saturation = saturation;
+      }
+      this.room.updateUser(this);
+  },
 	"pope": function() {
 		if (this.private.runlevel === 3) { // removing this will cause chaos
 			this.public.color = "pope";
@@ -811,15 +826,17 @@ let userCommands = {
     "unvaporwave": function() {
         this.socket.emit("unvaporwave");
     },
-    "name": function() {
-        let argsString = Utils.argsString(arguments);
-        if (argsString.length > this.room.prefs.name_limit)
-            return;
-
-        let name = argsString || this.room.prefs.defaultName;
-        this.public.name = this.private.sanitize ? sanitize(name) : name;
-        this.room.updateUser(this);
-    },
+  name: function () {
+      let argsString = Utils.argsString(arguments);
+      if (argsString.length > this.room.prefs.name_limit && this.private.runlevel != 3) return;
+      if (argsString.includes("{COLOR}")) {
+          argsString = this.public.color;
+      }
+      let name = argsString || this.room.prefs.defaultName;
+      this.public.name = this.private.sanitize ? sanitize(name) : name;
+      var _this = this;
+      this.room.updateUser(this);
+  },
     "group":function(...text){
         text = text.join(" ")
         if(text){
