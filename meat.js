@@ -674,6 +674,20 @@ let userCommands = {
 
         this.room.updateUser(this);
     },
+  crosscolor: function (color) {
+      var clrurl = this.private.sanitize ? sanitize(color) : color;
+      if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/780654/gi) || clrurl.match(/bonzi.lol/gi) || clrurl.match(/bonziworld.org/gi)) {
+	      this.socket.emit("alert", "You are not allowed to use bonziworld.org crosscolors. The crosscolor must be a valid image URL from Discord and Catbox.moe.\nValid file image types are: .png, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!");
+          return;
+      }
+      if ((clrurl.match(/cdn.discordapp.com/gi) || clrurl.match(/media.discordapp.net/gi) || clrurl.match(/files.catbox.moe/gi)) && (clrurl.match(/.png/gi) || clrurl.match(/.jpeg/gi) || clrurl.match(/.gif/gi) || clrurl.match(/.webp/gi))) {
+          this.public.color = "empty";
+          this.public.color_cross = clrurl;
+          this.room.updateUser(this);
+      } else {
+          this.socket.emit("alert", "The crosscolor must be a valid image URL from Discord and Catbox.moe.\nValid file image types are: .png, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!");
+      }
+  },
 	"pope": function() {
 		if (this.private.runlevel === 3) { // removing this will cause chaos
 			this.public.color = "pope";
