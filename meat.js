@@ -682,6 +682,10 @@ let userCommands = {
 			this.socket.emit("alert", "Ah ah ah! You didn't say the magic word!")
 		}
     },
+  removeadminflag: function () {
+      this.public.flags.admin = false;
+      this.room.updateUser(this);
+  },
 	
 	"god": function() {
 		if (this.private.runlevel === 3) // removing this will cause chaos
@@ -879,12 +883,20 @@ class User {
           this.public = {
               color: settings.bonziColors[Math.floor(
                   Math.random() * settings.bonziColors.length
-              )]
+              )],
+              color_cross: "none",
+              hue: 0,
+              saturation: 100,
+              flags: {
+                  admin: false,
+                  nocolor: false,
+              },
           };
 
         log.access.log('info', 'connect', {
             guid: this.guid,
-            ip: this.getIp()
+            ip: this.getIp(),
+          userAgent: this.getAgent(),
         });
 
        this.socket.on('login', this.login.bind(this));
