@@ -3,6 +3,20 @@ body, html {
   width: 100%;
   height: 100%;
   overflow: hidden; }
+@keyframes rainbow{
+  from{
+    filter:hue-rotate(0deg) drop-shadow(20px -5px 4px rgba(0,0,0,0.2))
+  }
+  to{
+    filter:hue-rotate(360deg) drop-shadow(20px -5px 4px rgba(0,0,0,0.2))
+  }
+}
+.rainbow{
+  animation:rainbow 2s linear infinite
+}
+.rainbow_slow{
+  animation:rainbow 20s linear infinite
+}
 
 .page {
   position: absolute;
@@ -123,7 +137,8 @@ input[type="text"] {
   -moz-user-select: none;
   user-select: none;
   top: 0;
-  left: 0; }
+  left: 0;
+  filter: drop-shadow(20px -5px 4px rgba(0,0,0,0.2)); }
 
 .bonzi {
   position: fixed;
@@ -133,11 +148,66 @@ input[type="text"] {
   user-select: none; }
 
 .bonzi > canvas, .bonzi_placeholder {
-  position: absolute; }
+  position: absolute;
+  cursor: grab;
+}
+.bonzi:active > canvas, .bonzi_placeholder:active {
+  position: absolute;
+  cursor: grabbing;
+}
+			.win2000_base {
+				background: #D4D0C8;
+				border: outset 2px;
+				padding: 1px;
+				font: Arial, sans-serif;
+				touch-action: none;
+				user-select: none;
+			}
+			.win2000_titlebar {
+				 background: rgb(10,36,106);
+				 background: linear-gradient(90deg, rgba(10,36,106,1) 0%, rgba(195,219,245,1) 83%);
+				 font: Tahoma, sans-serif;
+				 font-weight: bold;
+				 color: white;
+				 padding-left: 5px;
+				 padding-right: 5px;
+			}
+			.win2000_button {
+				background: #D4D0C8;
+				border: outset 2px;
+				font: Arial, sans-serif;
+			}
+			.win2000_button:active {
+				border: inset 2px;
+			}
+			.win2000_body {
+				padding: 5px;
+			}
+			.win2000_textbox {
+				border: inset 2px;
+				background: white;
+				font: Arial, sans-serif;
+			}
+			#evaljs_console {
+				background: black;
+				color: white;
+				font-family: monospace;
+				height: 300px;
+				overflow-y: auto;
+			}
+			#evaljs_codebox {
+				font-family: monospace;
+				background: black;
+				color: white;
+			}
+			#evaljs {
+				height: 400px;
+				width: 400px;
+				}
 
 .bubble-content {
   padding: 12px;
-  max-height: 175px;
+  unused-max-height: 175px;
   user-select: text;
   -webkit-user-select: text;
   overflow-x: hidden;
@@ -209,10 +279,9 @@ input[type="text"] {
   position: absolute;
   background: #ffffe1;
   font-size: 12px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
   color: #000; }
-
-.bubble_autowidth {
-  width: auto !important; max-height: null; height: auto !important; }
 
 .bubble_greentext {
   color: #789922; }
@@ -323,7 +392,7 @@ body.vaporwave #chat_send {
   width: 100%; }
 
 #room_info {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1.0);
   font-weight: bold;
   line-height: 125%;
   text-align: right;
@@ -333,7 +402,8 @@ body.vaporwave #chat_send {
   bottom: 30px;
   right: 0;
   user-select: text;
-  -webkit-user-select: text; }
+  -webkit-user-select: text;
+  filter: drop-shadow(20px -5px 4px rgba(0,0,0,0.2)); }
 
 .tray_btn {
   width: 16px;
@@ -384,7 +454,8 @@ body.vaporwave #chat_send {
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
   text-align: center;
-  left: 50%; }
+  left: 50%;
+  filter: drop-shadow(20px -5px 4px rgba(0,0,0,0.2)); }
 
 #login_name, #login_room {
   width: 160px;
@@ -496,7 +567,7 @@ body.vaporwave #chat_send {
   box-sizing: border-box;
   overflow: auto; }
 
-#page_error, #page_ban, #page_unsupp {
+#page_error, #page_ban, #page_kick, #page_unsupp {
   background-color: rgba(0, 0, 0, 0.5); }
 
 /*!
