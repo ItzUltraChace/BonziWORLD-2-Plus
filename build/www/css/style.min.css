@@ -284,64 +284,80 @@ input[type="text"] {
 
 .bubble {
   padding: 0px;
-  width: 197px;
-  position: absolute; }
-  .bubble::after {
-    content: '';
-    position: absolute; }
+  width: 197px; 
+  position: absolute;
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+}
 
+.bubble_autowidth {
+ min-width: 328px;
+ width: auto;
+}
 .bubble-left {
   right: -45px;
-  top: 40px; }
-  .bubble-left::after {
-    background-image: url("../img/bonzi/bubble_tail_l.png");
-    width: 22px;
-    height: 14px;
-    top: 12px;
-    right: -22px; }
+  top: 40px;
+}
+.bubble-left::after {
+  background-image: url("../img/agents/bubble_tail_l.png");
+  width: 22px;
+  height: 14px;
+  top: 12px;
+  right: -22px;
+}
 
 .bubble-right {
   top: 40px;
-  left: 155px; }
-  .bubble-right::after {
-    background-image: url("../img/bonzi/bubble_tail_r.png");
-    width: 22px;
-    height: 14px;
-    top: 12px;
-    left: -22px; }
+  left: 155px;
+}
+.bubble-right::after {
+  background-image: url("../img/agents/bubble_tail_r.png");
+  width: 22px;
+  height: 14px;
+  top: 12px;
+  left: -22px;
+}
 
 .bubble-bottom {
-  top: 156px; }
-  .bubble-bottom::after {
-    background-image: url("../img/bonzi/bubble_tail_b.png");
-    width: 28px;
-    height: 22px;
-    top: -22px;
-    left: 26px; }
+  top: 156px;
+}
+.bubble-bottom::after {
+  background-image: url("../img/agents/bubble_tail_b.png");
+  width: 28px;
+  height: 22px;
+  top: -22px;
+  left: 26px;
+}
 
 .bubble-top {
-  bottom: 4px; }
-  .bubble-top::after {
-    background-image: url("../img/bonzi/bubble_tail_t.png");
-    width: 28px;
-    height: 22px;
-    left: 110px; }
+  bottom: 4px;
+}
+.bubble-top::after {
+  background-image: url("../img/agents/bubble_tail_t.png");
+  width: 28px;
+  height: 22px;
+  left: 110px;
+}
 
 .bonzi_name {
-  border-style: solid;
-  border-width: 4px 12px 4px 0;
-  border-radius: 9px;
-  border: #000000 solid 1px;
-  padding: 8px;
-  position: absolute;
-  background: #ffffe1;
-  font-size: 12px;
-  font-smooth: never;
-  -webkit-font-smoothing: none;
-  color: #000; }
+	border-style: solid;
+	border-width: 4px 12px 4px 0;
+	border-radius: 9px;
+	border: #000000 solid 1px;
+	padding: 8px;
+	position: absolute;
+	background: #ffffe1;
+	font-size: 12px;
+	color: #000;
+	font-smooth: never;
+	-webkit-font-smoothing : none;
+}
 
 .bubble_greentext {
-  color: #789922; }
+  color: #789922;
+}
 
 body.vaporwave #content {
   background-color: #008080;
