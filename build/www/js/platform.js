@@ -120,7 +120,13 @@ window.onload = function(){
                     pope:{name:"POPE",disabled:function(){return !admin},callback:function(){socket.emit("command",{list:["pope"]})}},
                     god:{name:"GOD",disabled:function(){return !admin},callback:function(){socket.emit("command",{list:["god"]})}},
                 }
-            }
+            },
+      color: {
+        name: "Set Color",
+        callback() {
+          $("#color_box").show();
+        },
+      },
         }
     })
     $("#updated")[(+localStorage.tos||0)<1593415280233?"show":"hide"]()
