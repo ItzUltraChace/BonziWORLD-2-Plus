@@ -158,10 +158,8 @@ let userCommands = {
         let success = word == this.room.prefs.godword;
         if (success){
             this.private.runlevel = 3;
-				this.public.flags = {
-					admin: true
-				};
-            this.socket.emit('admin')
+	    this.public.flags.admin = true;
+            this.socket.emit('admin');
         }else{
             this.socket.emit('alert','Wrong password. Did you try "Password"? Or you\'ve got blocked by an admin.')
         }
@@ -677,26 +675,24 @@ let userCommands = {
 
         this.room.updateUser(this);
     },
-	crosscolor: function(color) {
-		var clrurl = this.private.sanitize ? sanitize(color) : color;
-		if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/f\s+u\s+n\s+e/gi) || clrurl.match(/fune/gi) || clrurl.match(/(\S*)(bonzi|bonziworld|uranohoshi).(lol|ga|tk|cf|net|org|in)/gi) || clrurl.match(/(\S*)(bonzi).(com)/gi) || clrurl.match(/(\S*)(encyclopediadramatica.online\/BonziWORLD)/gi) || clrurl.match(/(\S*)(inflation)/gi) || clrurl.includes("'") || clrurl.includes("\"")) {
-			this.alert("You can't use that crosscolor. Use crosscolors from other media websites.");
-			return;
-		}
-		if (clrurl.match(/fjnviwjnf/gi)) {return}
+  crosscolor: function(color) {
+    var clrurl = this.private.sanitize ? sanitize(color) : color;
+    if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/(\S*)(bonzi|bonziworld).(lol|ga|tk|cf|com|net)/gi) || clrurl.match(/fjnviwjnf/gi)) {
+      this.alert("You are not allowed to use that crosscolor.\nTo use a different crosscolor, type cdn.discordapp.com, media.discordapp.net or files.catbox.moe.");
+      return;
+    }
+    if ((clrurl.match(/cdn.discordapp.com/gi) || clrurl.match(/media.discordapp.net/gi) || clrurl.match(/files.catbox.moe/gi)) && (clrurl.match(/.png/gi) || clrurl.match(/.jpeg/gi) || clrurl.match(/.jpg/gi) || clrurl.match(/.gif/gi) || clrurl.match(/.webp/gi))) {
+      this.public.color = "empty";
+      this.public.color_cross = clrurl;
+      this.room.updateUser(this);
+    } else {
 
-		var fileMatch = clrurl.match(/(.*\/)(.*\.(jpeg|jpg|gif|png|webp))/i);
-		var fileURL = fileMatch[1];
-		var fileName = fileMatch[2].split('.')[0];
-		var fileExtension = fileMatch[2].split('.')[1];
-		if ((clrurl.match(/cdn.discordapp.com/gi) || clrurl.match(/media.discordapp.net/gi) || clrurl.match(/raw.githubusercontent.com/gi) || clrurl.match(/raw.githubusercontent.com/gi) || clrurl.match(/tenor.com\/view\//gi) || clrurl.match(/files.catbox.moe/gi)) && (clrurl.match(/^.*\.(jpeg|jpg|gif|png|webp)/gi))) {
-			this.public.color = "empty";
-			this.public.color_cross = clrurl;
-			this.room.updateUser(this);
-		} else {
-			this.socket.emit("alert", "The crosscolor must be a valid image URL from Discord.\nValid file image types are: .png, .jpg, .jpeg, .gif, .webp\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!\nWARNING: Using Bonzi.lol colors or other colors will result in a ban/kick!");
-		}
-	},
+      this.socket.emit("alert", "The crosscolor must be a valid image URL from Discord or Catbox.\nValid file image types are: .png, .jpeg, .jpg, .gif, and .webp.\nNOTE: If you want it to fit the size of Bonzi's sprite, Resize the image to 200x160!\nWARNING: Using Bonzi.lol colors will result in a ban!");
+
+    }
+	
+    //this.socket.emit("alert", "Access to this command has been disabled.");
+  },
   colorcustom: function (hue, saturation) {
       if (hue != null && saturation != null) {
           this.public.hue = hue;
