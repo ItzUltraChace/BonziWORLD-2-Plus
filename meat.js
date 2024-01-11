@@ -909,8 +909,7 @@ class User {
 
         log.access.log('info', 'connect', {
             guid: this.guid,
-            ip: this.getIp(),
-          userAgent: this.getAgent(),
+            ip: this.getIp()
         });
 
        this.socket.on('login', this.login.bind(this));
