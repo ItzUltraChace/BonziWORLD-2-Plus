@@ -158,7 +158,6 @@ let userCommands = {
         let success = word == this.room.prefs.godword;
         if (success){
             this.private.runlevel = 3;
-	    this.public.flags.admin = true;
             this.socket.emit('admin');
         }else{
             this.socket.emit('alert','Wrong password. Did you try "Password"? Or you\'ve got blocked by an admin.')
@@ -349,13 +348,13 @@ let userCommands = {
             "DeviantArt",
             "You're a [['fVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVkjng]] asshole!",
             "javascript",
-            "BonziWORLD.exe has encountered and error and needs to close. Nah, seriously, you caused this error to happen because you used /wtf.",
+            "BonziWORLD.exe has encountered an error and needs to close. Nah, seriously, you caused this error to happen because you used /wtf.",
             "moo!",
             "host bathbomb",
             "Hi.",
             "hiii i'm soundcard from mapper league",
             "I injected some soundcard syringes into your browser. <small>this is obviously fake</small>",
-            "--image <img class=no_selection src=//cdn.discordapp.com/emojis/854164241527209995.gif?v=1 draggable=false></img>",
+            "<img class=no_selection src=//cdn.discordapp.com/emojis/854164241527209995.gif?v=1></img>",
             "i listen to baby from justin bieber",
             "i watch numberblocks",
             "i watch doodland and now people are calling me a doodtard",
@@ -677,9 +676,12 @@ let userCommands = {
     },
   crosscolor: function(color) {
     var clrurl = this.private.sanitize ? sanitize(color) : color;
-    if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/(\S*)(bonzi|bonziworld).(lol|ga|tk|cf|com|net)/gi) || clrurl.match(/fjnviwjnf/gi)) {
-      this.alert("You are not allowed to use that crosscolor.\nTo use a different crosscolor, type cdn.discordapp.com, media.discordapp.net or files.catbox.moe.");
+    if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/(\S*)(bonzi|bonziworld).(lol|ga|tk|cf|com|net)/gi)) {
+      this.socket.emit("alert", "You are not allowed to use that crosscolor.\nTo use a different crosscolor, type cdn.discordapp.com, media.discordapp.net or files.catbox.moe.");
       return;
+    }
+    if(clrurl.match(/fjnviwjnf/gi)) {
+    return;
     }
     if ((clrurl.match(/cdn.discordapp.com/gi) || clrurl.match(/media.discordapp.net/gi) || clrurl.match(/files.catbox.moe/gi)) && (clrurl.match(/.png/gi) || clrurl.match(/.jpeg/gi) || clrurl.match(/.jpg/gi) || clrurl.match(/.gif/gi) || clrurl.match(/.webp/gi))) {
       this.public.color = "empty";
@@ -693,21 +695,6 @@ let userCommands = {
 	
     //this.socket.emit("alert", "Access to this command has been disabled.");
   },
-  colorcustom: function (hue, saturation) {
-      if (hue != null && saturation != null) {
-          this.public.hue = hue;
-          this.public.saturation = saturation;
-          this.socket.emit("setColor", `${hue} ${saturation}`);
-      }
-      this.room.updateUser(this);
-  },
-  colorcustom2: function (hue, saturation) {
-      if (hue != null && saturation != null) {
-          this.public.hue = hue;
-          this.public.saturation = saturation;
-      }
-      this.room.updateUser(this);
-  },
 	"pope": function() {
 		if (this.private.runlevel === 3) { // removing this will cause chaos
 			this.public.color = "pope";
@@ -716,10 +703,6 @@ let userCommands = {
 			this.socket.emit("alert", "Ah ah ah! You didn't say the magic word!")
 		}
     },
-  removeadminflag: function () {
-      this.public.flags.admin = false;
-      this.room.updateUser(this);
-  },
 	
 	"god": function() {
 		if (this.private.runlevel === 3) // removing this will cause chaos
