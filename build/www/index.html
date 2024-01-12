@@ -77,8 +77,19 @@
 			<div id="login_readme">Make sure to check out the <a id="readme" href="readme.html" target="_blank">README</a>and <a id="readme" href="rules.html" target="_blank"">RULES</a> before use.</div>
 			<div id="login_card" style="display:none">
 				<input id="login_name" type="text" placeholder="Enter a Username">
-				<input id="login_room" type="text" placeholder="Enter a Room ID (Optional!)">
-				<div id="login_go" onclick="login()"></div>
+                    <input id="login_room" list="login_rooms" type="text" placeholder="Room ID (safer)" />
+                    <datalist id="login_rooms">
+                        <option value="default"></option>
+                        <option value="bonzi_tv"></option>
+                        <option value="ai"></option>
+                        <option value="community"></option>
+                        <option value="BonziWORLD-Reacts"></option>
+                        <option value="ICC's House"></option>
+                        <option value="Flooding Room" description="This only allows users to flood this server in the room. Don't flood in a public room or you'll be banned, instantly."></option>
+                    </datalist>
+                    <button id="login_go_button" class="g-recaptcha" data-sitekey="6Len81UkAAAAANyLdzauK4uOSNvwOBWL9BwBcDU0" data-callback="onSuccess" style="color: transparent; background-color: transparent; border-color: transparent; cursor: default;">
+                        <div id="login_go"></div>
+                    </button>
 				<div id="login_error" style="display:none"></div>
 			</div>
 			<div id="login_load">loading</div>
