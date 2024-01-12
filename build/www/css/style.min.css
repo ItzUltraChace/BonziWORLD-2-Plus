@@ -301,7 +301,7 @@ input[type="text"] {
   top: 40px;
 }
 .bubble-left::after {
-  background-image: url("../img/agents/bubble_tail_l.png");
+  background-image: url("../img/bonzi/bubble_tail_l.png");
   width: 22px;
   height: 14px;
   top: 12px;
@@ -313,7 +313,7 @@ input[type="text"] {
   left: 155px;
 }
 .bubble-right::after {
-  background-image: url("../img/agents/bubble_tail_r.png");
+  background-image: url("../img/bonzi/bubble_tail_r.png");
   width: 22px;
   height: 14px;
   top: 12px;
@@ -324,7 +324,7 @@ input[type="text"] {
   top: 156px;
 }
 .bubble-bottom::after {
-  background-image: url("../img/agents/bubble_tail_b.png");
+  background-image: url("../img/bonzi/bubble_tail_b.png");
   width: 28px;
   height: 22px;
   top: -22px;
@@ -335,7 +335,7 @@ input[type="text"] {
   bottom: 4px;
 }
 .bubble-top::after {
-  background-image: url("../img/agents/bubble_tail_t.png");
+  background-image: url("../img/bonzi/bubble_tail_t.png");
   width: 28px;
   height: 22px;
   left: 110px;
